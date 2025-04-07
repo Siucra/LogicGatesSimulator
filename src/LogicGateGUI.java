@@ -16,7 +16,11 @@ public class LogicGateGUI extends JFrame{
 		setSize(600,400); //size of screen
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE); //exits program when window is closed
-		setLayout(new FlowLayout());
+		setLayout(new BorderLayout());
+		
+		//controls panel
+		JPanel controlsPanel = new JPanel();
+		controlsPanel.setLayout(new FlowLayout());
 		
 		//declaring variables
 		inputA = new JCheckBox("Input A");
@@ -30,16 +34,21 @@ public class LogicGateGUI extends JFrame{
 		evaluateButton.addActionListener(e -> evaluateGate());//listener event
 		
 		imageLabel = new JLabel(); //constructs an image
-		add(imageLabel); //adds image to the main GUI
+		imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		add(controlsPanel, BorderLayout.NORTH);
+		add(imageLabel, BorderLayout.CENTER);
+		
+		
 		
 		gateSelector.addActionListener(e -> updateGateImage());
 		
 		//adds each GUI component
-		add(gateSelector);
-		add(inputA);
-		add(inputB);
-		add(outputLabel);
-		add(evaluateButton);
+		controlsPanel.add(gateSelector);
+		controlsPanel.add(inputA);
+		controlsPanel.add(inputB);
+		controlsPanel.add(outputLabel);
+		controlsPanel.add(evaluateButton);
 		
 		
 	}
@@ -54,7 +63,9 @@ public class LogicGateGUI extends JFrame{
 
 		//error catching
 		if (imagePath != null) {
-			imageLabel.setIcon(new ImageIcon(imagePath));
+			ImageIcon icon = new ImageIcon(imagePath);
+			Image scaled = icon.getImage().getScaledInstance(200,150, Image.SCALE_SMOOTH);
+			imageLabel.setIcon(new ImageIcon(scaled));
 		}
 		else {
 			imageLabel.setIcon(null);
@@ -73,7 +84,12 @@ public class LogicGateGUI extends JFrame{
 		switch(selectedGate) {
 			case "AND":{
 				result = LogicGateApp.andGate(a,b);
-
+				
+				//image replacement
+				String imagePath = "images/AND_gate_Evaluated.png";
+				ImageIcon icon = new ImageIcon(imagePath);
+				Image scaled = icon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
+				imageLabel.setIcon(new ImageIcon(scaled));
 				break;//exits loop
 			}
 			case "OR":{
@@ -90,6 +106,7 @@ public class LogicGateGUI extends JFrame{
 			}
 		}
 		outputLabel.setText("Output: " + result);//display result
+
 	}
 	
 	
