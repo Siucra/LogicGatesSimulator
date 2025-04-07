@@ -12,7 +12,7 @@ public class LogicGateGUI extends JFrame{
 	
 	public LogicGateGUI() {
 		//constructor for GUI layout
-		setTitle("My Logic Gate Simulator");//title
+		setTitle("Logic Gate Simulator");//title
 		setSize(600,400); //size of screen
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE); //exits program when window is closed
@@ -31,7 +31,7 @@ public class LogicGateGUI extends JFrame{
 		gateSelector = new JComboBox<>(gates);
 		
 		JButton evaluateButton = new JButton("Evaluate");//creates a combo box with gate names
-		evaluateButton.addActionListener(e -> evaluateGate());//listener event
+		evaluateButton.addActionListener(e -> evaluateGate());//listener event for evaluate button
 		
 		imageLabel = new JLabel(); //constructs an image
 		imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -39,8 +39,7 @@ public class LogicGateGUI extends JFrame{
 		add(controlsPanel, BorderLayout.NORTH);
 		add(imageLabel, BorderLayout.CENTER);
 		
-		
-		
+		//lambda : when action happens on gateSelector, run updateGateImage()
 		gateSelector.addActionListener(e -> updateGateImage());
 		
 		//adds each GUI component
@@ -56,8 +55,11 @@ public class LogicGateGUI extends JFrame{
 	private void updateGateImage() {
 		String selectedGate = (String) gateSelector.getSelectedItem();
 		
+		//uses switch expression to choose a value for imagepath
+		//-> lambda expression : sepearates parameters
 		String imagePath = switch(selectedGate) {
 		case "AND" -> "images/AND_Gate.png";
+		case "OR" -> "images/OR_gate.png";
 		default -> null;
 		};
 
@@ -85,7 +87,7 @@ public class LogicGateGUI extends JFrame{
 			case "AND":{
 				result = LogicGateApp.andGate(a,b);
 				
-				//image replacement
+				//AND image replacement
 				String imagePath = "images/AND_gate_Evaluated.png";
 				ImageIcon icon = new ImageIcon(imagePath);
 				Image scaled = icon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
@@ -94,6 +96,12 @@ public class LogicGateGUI extends JFrame{
 			}
 			case "OR":{
 				result = LogicGateApp.orGate(a,b);
+				
+				//OR image replacement
+				String imagePath = "images/OR_gate_Evaluated.png";
+				ImageIcon icon = new ImageIcon(imagePath);
+				Image scaled = icon.getImage().getScaledInstance(200,150,Image.SCALE_SMOOTH);
+				imageLabel.setIcon(new ImageIcon(scaled));
 				break;//exits loop
 			}
 			case "XOR":{
