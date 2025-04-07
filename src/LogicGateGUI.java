@@ -58,8 +58,9 @@ public class LogicGateGUI extends JFrame{
 		//uses switch expression to choose a value for imagepath
 		//-> lambda expression : sepearates parameters
 		String imagePath = switch(selectedGate) {
-		case "AND" -> "images/AND_Gate.png";
+		case "AND" -> "images/AND_gate.png";
 		case "OR" -> "images/OR_gate.png";
+		case "XOR" -> "images/XOR_gate.png";
 		default -> null;
 		};
 
@@ -106,6 +107,12 @@ public class LogicGateGUI extends JFrame{
 			}
 			case "XOR":{
 				result = LogicGateApp.xorGate(a, b);
+				
+				//XOR image replacement
+				String imagePath = "images/XOR_gate_Evaluated.png";
+				ImageIcon icon = new ImageIcon(imagePath);
+				Image scaled = icon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
+				imageLabel.setIcon(new ImageIcon(scaled));
 				break;//exits loop
 			}
 			case "NOT (A only)":{
