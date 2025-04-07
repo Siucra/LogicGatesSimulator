@@ -8,11 +8,12 @@ public class LogicGateGUI extends JFrame{
 	private JCheckBox inputA, inputB; //checkboxes
 	private JLabel outputLabel; // displays output
 	private JComboBox<String> gateSelector; //dropdown menu to choose logic gate
+	private JLabel imageLabel; //display logic gate image
 	
 	public LogicGateGUI() {
 		//constructor for GUI layout
 		setTitle("My Logic Gate Simulator");//title
-		setSize(400,200); //size of screen
+		setSize(600,400); //size of screen
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE); //exits program when window is closed
 		setLayout(new FlowLayout());
@@ -28,13 +29,36 @@ public class LogicGateGUI extends JFrame{
 		JButton evaluateButton = new JButton("Evaluate");//creates a combo box with gate names
 		evaluateButton.addActionListener(e -> evaluateGate());//listener event
 		
-		//adds each gui component
+		imageLabel = new JLabel(); //constructs an image
+		add(imageLabel); //adds image to the main GUI
+		
+		gateSelector.addActionListener(e -> updateGateImage());
+		
+		//adds each GUI component
 		add(gateSelector);
 		add(inputA);
 		add(inputB);
 		add(outputLabel);
 		add(evaluateButton);
 		
+		
+	}
+
+	private void updateGateImage() {
+		String selectedGate = (String) gateSelector.getSelectedItem();
+		
+		String imagePath = switch(selectedGate) {
+		case "AND" -> "images/AND_Gate.png";
+		default -> null;
+		};
+
+		//error catching
+		if (imagePath != null) {
+			imageLabel.setIcon(new ImageIcon(imagePath));
+		}
+		else {
+			imageLabel.setIcon(null);
+		}
 	}
 
 	public void evaluateGate() {
@@ -49,6 +73,7 @@ public class LogicGateGUI extends JFrame{
 		switch(selectedGate) {
 			case "AND":{
 				result = LogicGateApp.andGate(a,b);
+
 				break;//exits loop
 			}
 			case "OR":{
