@@ -49,7 +49,6 @@ public class LogicGateGUI extends JFrame{
 		controlsPanel.add(outputLabel);
 		controlsPanel.add(evaluateButton);
 		
-		
 	}
 
 	private void updateGateImage() {
@@ -61,6 +60,7 @@ public class LogicGateGUI extends JFrame{
 		case "AND" -> "images/AND_gate.png";
 		case "OR" -> "images/OR_gate.png";
 		case "XOR" -> "images/XOR_gate.png";
+		case "NOT (A only)" -> "images/NOT_A_gate.png";
 		default -> null;
 		};
 
@@ -117,6 +117,12 @@ public class LogicGateGUI extends JFrame{
 			}
 			case "NOT (A only)":{
 				result = LogicGateApp.notGate(a);
+				
+				//NOT A Image replacement
+				String imagePath = "images/NOT_A_gate_Evaluated.png";
+				ImageIcon icon = new ImageIcon(imagePath);
+				Image scaled = icon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);	
+				imageLabel.setIcon(new ImageIcon(scaled));
 				break;//exits loop
 			}
 		}
