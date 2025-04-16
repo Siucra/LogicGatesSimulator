@@ -25,6 +25,10 @@ public class LogicGateApp {
 		return !a;
 	}
 	
+	public static boolean notB(boolean b) {
+		return !b;
+	}
+	
 	public static void main(String[]args) {
 		//()-> shortcut for  writing small function with no input
 		//() -> called a lambda : takes no parameters,
