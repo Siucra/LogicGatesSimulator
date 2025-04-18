@@ -61,7 +61,7 @@ public class LogicGateGUI extends JFrame{
 		case "OR" -> "images/OR_gate.png";
 		case "XOR" -> "images/XOR_gate.png";
 		case "NOT (A only)" -> "images/NOT_A_gate.png";
-		case "NOT (B only)" -> "";
+		case "NOT (B only)" -> "images/NOT_B_gate_Evaluated.png";
 		default -> null;
 		};
 
@@ -130,7 +130,7 @@ public class LogicGateGUI extends JFrame{
 				result = LogicGateApp.notGate(b);
 				
 				//NOT B Image Replacement
-				String imagePath = "";
+				String imagePath = "images/NOT_B_gate_Evaluated.png";
 				ImageIcon icon = new ImageIcon(imagePath);
 				Image scaled = icon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
 				imageLabel.setIcon(new ImageIcon(scaled));
