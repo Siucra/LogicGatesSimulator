@@ -62,7 +62,7 @@ public class LogicGateGUI extends JFrame{
 		case "OR" -> "images/OR_gate.png";
 		case "XOR" -> "images/XOR_gate.png";
 		case "NOT (A only)" -> "images/NOT_A_gate.png";
-		case "NOT (B only)" -> "images/NOT_B_gate_Evaluated.png";
+		case "NOT (B only)" -> "images/NOT_B_gate.png";
 		default -> null;
 		};
 
