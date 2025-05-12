@@ -27,7 +27,7 @@ public class LogicGateGUI extends JFrame{
 		inputB = new JCheckBox("Input B");
 		outputLabel = new JLabel("Output: false");//checkbox initial false value
 		
-		String[] gates = {"AND", "OR", "XOR", "NOT (A only), NOT (B only)"};
+		String[] gates = {"AND", "OR", "XOR", "NOT (A only)","NOT (B only)"};
 		gateSelector = new JComboBox<>(gates);
 		
 		JButton evaluateButton = new JButton("Evaluate");//creates a combo box with gate names
