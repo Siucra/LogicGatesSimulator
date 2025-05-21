@@ -77,6 +77,13 @@ public class LogicGateGUI extends JFrame{
 		}
 	}
 
+	private void setGateImage(String fileName) {
+		String imagePath = "images/" + fileName;
+		ImageIcon icon = new ImageIcon(imagePath);
+		Image scaled = icon.getImage().getScaledInstance(200,150,Image.SCALE_SMOOTH);
+		imageLabel.setIcon(new ImageIcon(scaled));
+	}
+	
 	public void evaluateGate() {
 		//gets the value of the checkboxes, if checked set to true
 		boolean a = inputA.isSelected();
@@ -89,52 +96,27 @@ public class LogicGateGUI extends JFrame{
 		switch(selectedGate) {
 			case "AND":{
 				result = LogicGateApp.andGate(a,b);
-				
-				//AND image replacement
-				String imagePath = "images/AND_gate_Evaluated.png";
-				ImageIcon icon = new ImageIcon(imagePath);
-				Image scaled = icon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
-				imageLabel.setIcon(new ImageIcon(scaled));
-				break;//exits loop
+				setGateImage("AND_gate_Evaluated.png");
+				break;
 			}
 			case "OR":{
 				result = LogicGateApp.orGate(a,b);
-				
-				//OR image replacement
-				String imagePath = "images/OR_gate_Evaluated.png";
-				ImageIcon icon = new ImageIcon(imagePath);
-				Image scaled = icon.getImage().getScaledInstance(200,150,Image.SCALE_SMOOTH);
-				imageLabel.setIcon(new ImageIcon(scaled));
+				setGateImage("OR_gate_Evaluated.png");
 				break;//exits loop
 			}
 			case "XOR":{
 				result = LogicGateApp.xorGate(a, b);
-				
-				//XOR image replacement
-				String imagePath = "images/XOR_gate_Evaluated.png";
-				ImageIcon icon = new ImageIcon(imagePath);
-				Image scaled = icon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
-				imageLabel.setIcon(new ImageIcon(scaled));
+				setGateImage("XOR_gate_Evaluated.png");
 				break;//exits loop
 			}
 			case "NOT (A only)":{
 				result = LogicGateApp.notGate(a);
-				
-				//NOT A Image replacement
-				String imagePath = "images/NOT_A_gate_Evaluated.png";
-				ImageIcon icon = new ImageIcon(imagePath);
-				Image scaled = icon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);	
-				imageLabel.setIcon(new ImageIcon(scaled));
+				setGateImage("NOT_A_gate_Evaluated.png");
 				break;//exits loop
 			}
 			case "NOT (B only)":{
 				result = LogicGateApp.notGate(b);
-				
-				//NOT B Image Replacement
-				String imagePath = "images/NOT_B_gate_Evaluated.png";
-				ImageIcon icon = new ImageIcon(imagePath);
-				Image scaled = icon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
-				imageLabel.setIcon(new ImageIcon(scaled));
+				setGateImage("NOT_B_gate_Evaluated.png");
 				break;//exit loop
 				}
 			
