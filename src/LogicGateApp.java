@@ -21,13 +21,6 @@ public class LogicGateApp {
 		
 	}
 	
-	public static boolean notA(boolean a) {
-		return !a;
-	}
-	
-	public static boolean notB(boolean b) {
-		return !b;
-	}
 	
 	public static void main(String[]args) {
 		//()-> shortcut for  writing small function with no input
