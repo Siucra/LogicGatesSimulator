@@ -20,7 +20,6 @@ public class LogicGateApp {
 		return a ^ b; //Exclusive OR
 		
 	}
-
 	
 	public static void main(String[]args) {
 		//()-> shortcut for  writing small function with no input
