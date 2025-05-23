@@ -12,22 +12,15 @@ public class LogicGateApp {
 		return a || b;
 	}
 	
-	public static boolean notGate(boolean a) {
-		return !a;
+	public static boolean notGate(boolean input) {
+		return !input;
 	}
 	
 	public static boolean xorGate(boolean a, boolean b) {
 		return a ^ b; //Exclusive OR
 		
 	}
-	
-	public static boolean notA(boolean a) {
-		return !a;
-	}
-	
-	public static boolean notB(boolean b) {
-		return !b;
-	}
+
 	
 	public static void main(String[]args) {
 		//()-> shortcut for  writing small function with no input
