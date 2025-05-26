@@ -27,7 +27,7 @@ public class LogicGateGUI extends JFrame{
 		inputB = new JCheckBox("Input B");
 		outputLabel = new JLabel("Output: false");//checkbox initial false value
 		
-		String[] gates = {"AND", "OR", "XOR", "NOT (A only)","NOT (B only)"};
+		String[] gates = {"AND", "OR", "XOR", "NOT (A only)","NOT (B only)","NOR"};
 
 		gateSelector = new JComboBox<>(gates);
 		
@@ -63,6 +63,8 @@ public class LogicGateGUI extends JFrame{
 		case "XOR" -> "images/XOR_gate.png";
 		case "NOT (A only)" -> "images/NOT_A_gate.png";
 		case "NOT (B only)" -> "images/NOT_B_gate.png";
+		case "NOR" -> "images/NOR_gate.png";
+		
 		default -> null;
 		};
 
@@ -119,6 +121,11 @@ public class LogicGateGUI extends JFrame{
 				setGateImage("NOT_B_gate_Evaluated.png");
 				break;//exit loop
 				}
+			case "NOR":{
+				result = LogicGateApp.norGate(a, b);
+				setGateImage("NOR_gate_Evaluated.png");
+				break;
+			}
 			
 		}
 		outputLabel.setText("Output: " + result);//display result
