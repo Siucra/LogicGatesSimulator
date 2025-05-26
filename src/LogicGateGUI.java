@@ -4,6 +4,8 @@ import java.awt.event.*; // Provides event listeners
 
 //JFrame is the basic SWING window 
 public class LogicGateGUI extends JFrame{
+
+	private static final long serialVersionUID = 1L;
 	
 	private JCheckBox inputA, inputB; //checkboxes
 	private JLabel outputLabel; // displays output
