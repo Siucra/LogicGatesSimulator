@@ -38,9 +38,10 @@ public class LogicGateGUI extends JFrame{
 		
 		imageLabel = new JLabel(); //constructs an image
 		imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		SVGViewer viewer = new SVGViewer("and_gate,svg");
 		
 		add(controlsPanel, BorderLayout.NORTH);
-		add(imageLabel, BorderLayout.CENTER);
+		add(viewer, imageLabel, BorderLayout.CENTER);
 		
 		//lambda : when action happens on gateSelector, run updateGateImage()
 		gateSelector.addActionListener(e -> updateGateImage());
@@ -52,6 +53,8 @@ public class LogicGateGUI extends JFrame{
 		controlsPanel.add(outputLabel);
 		controlsPanel.add(evaluateButton);
 		
+
+		
 	}
 
 	private void updateGateImage() {
@@ -60,7 +63,7 @@ public class LogicGateGUI extends JFrame{
 		//uses switch expression to choose a value for imagepath
 		//-> lambda expression : sepearates parameters
 		String imagePath = switch(selectedGate) {
-		case "AND" -> "images/AND_gate.png";
+		case "AND" -> "images/AND_gate.svg";
 		case "OR" -> "images/OR_gate.png";
 		case "XOR" -> "images/XOR_gate.png";
 		case "NOT (A only)" -> "images/NOT_A_gate.png";
