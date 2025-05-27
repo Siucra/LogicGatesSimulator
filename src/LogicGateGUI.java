@@ -6,43 +6,33 @@ import java.io.File;
 //JFrame is the basic SWING window 
 public class LogicGateGUI extends JFrame{
 	
-	private JCheckBox inputA, inputB; //checkboxes
+	private JCheckBox inputA, inputB; //check-boxes
 	private JLabel outputLabel; // displays output
-	private JComboBox<String> gateSelector; //dropdown menu to choose logic gate
-	//private JLabel imageLabel; //display logic gate image
+	private JComboBox<String> gateSelector; //drop-down menu to choose logic gate
+	private SVGViewer viewer; //display logic gate SVG image
 	
-	public LogicGateGUI() {
-		//constructor for GUI layout
-		setTitle("Logic Gate Simulator");//title
-		setSize(600,400); //size of screen
-		
+	public LogicGateGUI() {//constructor for GUI layout
+		setTitle("Logic Gate Simulator");
+		setSize(600,400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE); //exits program when window is closed
 		setLayout(new BorderLayout());
 		
 		//controls panel
-		JPanel controlsPanel = new JPanel();
-		controlsPanel.setLayout(new FlowLayout());
+		JPanel controlsPanel = new JPanel(new FlowLayout());
 		
 		//declaring variables
 		inputA = new JCheckBox("Input A");
 		inputB = new JCheckBox("Input B");
-		outputLabel = new JLabel("Output: false");//checkbox initial false value
+		outputLabel = new JLabel("Output: false");//check-box initial false value
 		
 		String[] gates = {"AND", "OR", "XOR", "NOT (A only)","NOT (B only)","NOR"};
-
 		gateSelector = new JComboBox<>(gates);
 		
 		JButton evaluateButton = new JButton("Evaluate");//creates a combo box with gate names
 		evaluateButton.addActionListener(e -> evaluateGate());//listener event for evaluate button
 		
-		SVGViewer viewer = new SVGViewer();
-		viewer.loadSVG(new File("and_gate.svg"));
-
-		add(controlsPanel, BorderLayout.NORTH);
-		add(viewer, BorderLayout.CENTER);
-		
-		//lambda : when action happens on gateSelector, run updateGateImage()
-		gateSelector.addActionListener(e -> updateGateImage());
+		SVGViewer viewer = new SVGViewer(); //viewer for SVG logic gates
+		viewer.loadSVG(new File("and_gate.svg")); //default gate on load
 		
 		//adds each GUI component
 		controlsPanel.add(gateSelector);
@@ -51,44 +41,35 @@ public class LogicGateGUI extends JFrame{
 		controlsPanel.add(outputLabel);
 		controlsPanel.add(evaluateButton);
 		
-
+		add(controlsPanel, BorderLayout.NORTH);
+		add(viewer, BorderLayout.CENTER);
+		
+		//lambda : when action happens on gateSelector, run updateGateImage()
+		gateSelector.addActionListener(e -> updateGateImage());
 		
 	}
 
 	private void updateGateImage() {
 		String selectedGate = (String) gateSelector.getSelectedItem();
 		
-		//uses switch expression to choose a value for imagepath
-		//-> lambda expression : sepearates parameters
-		String imagePath = switch(selectedGate) {
+		//uses switch expression to choose a value for image-path
+		//-> lambda expression : separates parameters
+		String fileName = switch(selectedGate) {
 		case "AND" -> "images/AND_gate.svg";
-		case "OR" -> "images/OR_gate.png";
-		case "XOR" -> "images/XOR_gate.png";
-		case "NOT (A only)" -> "images/NOT_A_gate.png";
-		case "NOT (B only)" -> "images/NOT_B_gate.png";
-		case "NOR" -> "images/NOR_gate.png";
-		
+		case "OR" -> "images/OR_gate.svg";
+		case "XOR" -> "images/XOR_gate.svg";
+		case "NOT (A only)" -> "images/NOT_A_gate.svg";
+		case "NOT (B only)" -> "images/NOT_B_gate.svg";
+		case "NOR" -> "images/NOR_gate.svg";
 		default -> null;
 		};
+		
+		if (fileName != null) {
+			viewer.loadSVG(new File(fileName));
+		}
 
-		//error catching
-		if (imagePath != null) {
-			ImageIcon icon = new ImageIcon(imagePath);
-			Image scaled = icon.getImage().getScaledInstance(200,150, Image.SCALE_SMOOTH);
-			//imageLabel.setIcon(new ImageIcon(scaled));
-		}
-		else {
-			//imageLabel.setIcon(null);
-		}
 	}
 
-	private void setGateImage(String fileName) {
-		String imagePath = "images/" + fileName;
-		ImageIcon icon = new ImageIcon(imagePath);
-		Image scaled = icon.getImage().getScaledInstance(200,150,Image.SCALE_SMOOTH);
-		//imageLabel.setIcon(new ImageIcon(scaled));
-	}
-	
 	public void evaluateGate() {
 		//gets the value of the checkboxes, if checked set to true
 		boolean a = inputA.isSelected();
@@ -99,36 +80,12 @@ public class LogicGateGUI extends JFrame{
 		boolean result = false;
 		
 		switch(selectedGate) {
-			case "AND":{
-				result = LogicGateApp.andGate(a,b);
-				setGateImage("AND_gate_Evaluated.png");
-				break;
-			}
-			case "OR":{
-				result = LogicGateApp.orGate(a,b);
-				setGateImage("OR_gate_Evaluated.png");
-				break;//exits loop
-			}
-			case "XOR":{
-				result = LogicGateApp.xorGate(a, b);
-				setGateImage("XOR_gate_Evaluated.png");
-				break;//exits loop
-			}
-			case "NOT (A only)":{
-				result = LogicGateApp.notGate(a);
-				setGateImage("NOT_A_gate_Evaluated.png");
-				break;//exits loop
-			}
-			case "NOT (B only)":{
-				result = LogicGateApp.notGate(b);
-				setGateImage("NOT_B_gate_Evaluated.png");
-				break;//exit loop
-				}
-			case "NOR":{
-				result = LogicGateApp.norGate(a, b);
-				setGateImage("NOR_gate_Evaluated.png");
-				break;
-			}
+			case "AND" -> result = LogicGateApp.andGate(a,b);
+			case "OR" -> result = LogicGateApp.orGate(a,b);
+			case "XOR" -> result = LogicGateApp.xorGate(a, b);
+			case "NOT (A only)" -> result = LogicGateApp.notGate(a);
+			case "NOT (B only)" -> result = LogicGateApp.notGate(b);
+			case "NOR" -> result = LogicGateApp.norGate(a, b);
 			
 		}
 		outputLabel.setText("Output: " + result);//display result
