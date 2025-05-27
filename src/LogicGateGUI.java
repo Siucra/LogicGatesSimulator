@@ -9,7 +9,7 @@ public class LogicGateGUI extends JFrame{
 	private JCheckBox inputA, inputB; //check-boxes
 	private JLabel outputLabel; // displays output
 	private JComboBox<String> gateSelector; //drop-down menu to choose logic gate
-	private SVGViewer viewer; //display logic gate SVG image
+	private SVGViewer viewer;
 	
 	public LogicGateGUI() {//constructor for GUI layout
 		setTitle("Logic Gate Simulator");
@@ -27,12 +27,13 @@ public class LogicGateGUI extends JFrame{
 		
 		String[] gates = {"AND", "OR", "XOR", "NOT (A only)","NOT (B only)","NOR"};
 		gateSelector = new JComboBox<>(gates);
+
+		// Create SVG viewer before wiring action listeners
+		viewer = new SVGViewer();
+		viewer.loadSVG(new File("images/and_gate.svg")); // default gate on load
 		
 		JButton evaluateButton = new JButton("Evaluate");//creates a combo box with gate names
 		evaluateButton.addActionListener(e -> evaluateGate());//listener event for evaluate button
-		
-		SVGViewer viewer = new SVGViewer(); //viewer for SVG logic gates
-		viewer.loadSVG(new File("and_gate.svg")); //default gate on load
 		
 		//adds each GUI component
 		controlsPanel.add(gateSelector);
