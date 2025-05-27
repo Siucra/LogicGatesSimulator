@@ -1,16 +1,15 @@
 import javax.swing.*; //Provides GUI Components
 import java.awt.*; //Provides basic GUI tools
 import java.awt.event.*; // Provides event listeners
+import java.io.File;
 
 //JFrame is the basic SWING window 
 public class LogicGateGUI extends JFrame{
-
-	private static final long serialVersionUID = 1L;
 	
 	private JCheckBox inputA, inputB; //checkboxes
 	private JLabel outputLabel; // displays output
 	private JComboBox<String> gateSelector; //dropdown menu to choose logic gate
-	private JLabel imageLabel; //display logic gate image
+	//private JLabel imageLabel; //display logic gate image
 	
 	public LogicGateGUI() {
 		//constructor for GUI layout
@@ -36,12 +35,11 @@ public class LogicGateGUI extends JFrame{
 		JButton evaluateButton = new JButton("Evaluate");//creates a combo box with gate names
 		evaluateButton.addActionListener(e -> evaluateGate());//listener event for evaluate button
 		
-		imageLabel = new JLabel(); //constructs an image
-		imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		SVGViewer viewer = new SVGViewer("and_gate,svg");
-		
+		SVGViewer viewer = new SVGViewer();
+		viewer.loadSVG(new File("and_gate.svg"));
+
 		add(controlsPanel, BorderLayout.NORTH);
-		add(viewer, imageLabel, BorderLayout.CENTER);
+		add(viewer, BorderLayout.CENTER);
 		
 		//lambda : when action happens on gateSelector, run updateGateImage()
 		gateSelector.addActionListener(e -> updateGateImage());
@@ -77,10 +75,10 @@ public class LogicGateGUI extends JFrame{
 		if (imagePath != null) {
 			ImageIcon icon = new ImageIcon(imagePath);
 			Image scaled = icon.getImage().getScaledInstance(200,150, Image.SCALE_SMOOTH);
-			imageLabel.setIcon(new ImageIcon(scaled));
+			//imageLabel.setIcon(new ImageIcon(scaled));
 		}
 		else {
-			imageLabel.setIcon(null);
+			//imageLabel.setIcon(null);
 		}
 	}
 
@@ -88,7 +86,7 @@ public class LogicGateGUI extends JFrame{
 		String imagePath = "images/" + fileName;
 		ImageIcon icon = new ImageIcon(imagePath);
 		Image scaled = icon.getImage().getScaledInstance(200,150,Image.SCALE_SMOOTH);
-		imageLabel.setIcon(new ImageIcon(scaled));
+		//imageLabel.setIcon(new ImageIcon(scaled));
 	}
 	
 	public void evaluateGate() {
