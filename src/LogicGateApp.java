@@ -29,7 +29,7 @@ public class LogicGateApp {
 	public static void main(String[]args) {
 		//()-> shortcut for  writing small function with no input
 		//() -> called a lambda : takes no parameters,
-		//-> seperates the parameter from the code i want to run
+		//-> separates the parameter from the code i want to run
 		
 		SwingUtilities.invokeLater(() -> new LogicGateGUI().setVisible(true));
 		

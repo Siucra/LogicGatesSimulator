@@ -72,11 +72,11 @@ public class LogicGateGUI extends JFrame{
 	}
 
 	public void evaluateGate() {
-		//gets the value of the checkboxes, if checked set to true
+		//gets the value of the check-boxes, if checked set to true
 		boolean a = inputA.isSelected();
 		boolean b = inputB.isSelected();
 		
-		//gets selected item from dropdown menu
+		//gets selected item from drop-down menu
 		String selectedGate = (String) gateSelector.getSelectedItem();
 		boolean result = false;
 		
