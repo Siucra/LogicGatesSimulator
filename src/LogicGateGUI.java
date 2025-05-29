@@ -58,10 +58,11 @@ public class LogicGateGUI extends JFrame{
 		String fileName = switch(selectedGate) {
 		case "AND" -> "images/AND_gate.svg";
 		case "OR" -> "images/OR_gate.svg";
-		case "XOR" -> "images/XOR_gate.svg";
 		case "NOT (A only)" -> "images/NOT_A_gate.svg";
 		case "NOT (B only)" -> "images/NOT_B_gate.svg";
 		case "NOR" -> "images/NOR_gate.svg";
+		case "XOR" -> "images/XOR_gate.svg";
+		//nand
 		default -> null;
 		};
 		
@@ -83,11 +84,10 @@ public class LogicGateGUI extends JFrame{
 		switch(selectedGate) {
 			case "AND" -> result = LogicGateApp.andGate(a,b);
 			case "OR" -> result = LogicGateApp.orGate(a,b);
-			case "XOR" -> result = LogicGateApp.xorGate(a, b);
 			case "NOT (A only)" -> result = LogicGateApp.notGate(a);
 			case "NOT (B only)" -> result = LogicGateApp.notGate(b);
 			case "NOR" -> result = LogicGateApp.norGate(a, b);
-			
+			case "XOR" -> result = LogicGateApp.xorGate(a, b);
 		}
 		outputLabel.setText("Output: " + result);//display result
 
