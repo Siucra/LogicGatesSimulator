@@ -4,7 +4,7 @@
    height="100"
    version="1.1"
    id="svg3"
-   sodipodi:docname="AND_gate_Evaluated.svg"
+   sodipodi:docname="AND_gate_evaluated.svg"
    inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -22,7 +22,7 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="8.07"
-     inkscape:cx="146.15861"
+     inkscape:cx="169.57869"
      inkscape:cy="46.406444"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
@@ -32,23 +32,46 @@
      inkscape:current-layer="svg3" />
   <!-- Input Lines -->
   <line
-     x1="10.123916"
-     y1="51.065674"
-     x2="60.123917"
-     y2="51.065674"
-     stroke="#000000"
+     x1="10"
+     y1="30"
+     x2="60"
+     y2="30"
+     stroke="black"
      stroke-width="2"
      id="line1" />
+  <line
+     x1="10"
+     y1="70"
+     x2="60"
+     y2="70"
+     stroke="black"
+     stroke-width="2"
+     id="line2" />
   <!-- Rectangular left part of the gate -->
+  <rect
+     x="60"
+     y="20"
+     width="40"
+     height="60"
+     fill="none"
+     stroke="black"
+     stroke-width="2"
+     id="rect2" />
   <!-- Curved right part of the gate (half-circle) -->
+  <path
+     d="M100,20 A40,30 0 0,1 100,80"
+     fill="none"
+     stroke="black"
+     stroke-width="2"
+     id="path2" />
   <!-- Output line -->
   <line
-     x1="145.20447"
-     y1="50.123917"
-     x2="181.85873"
-     y2="50.123917"
-     stroke="#000000"
-     stroke-width="1.71817"
+     x1="140"
+     y1="50"
+     x2="180"
+     y2="50"
+     stroke="black"
+     stroke-width="2"
      id="line3" />
   <text
      xml:space="preserve"
@@ -56,62 +79,32 @@
      x="13.754647"
      y="14.869888"
      id="text3"
-     transform="translate(-3.0978935,30.978934)"><tspan
+     transform="translate(-3.7174722,5.9479554)"><tspan
        x="13.754647"
        y="14.869888"
        id="tspan7"><tspan
          style="font-size:17.3333px;fill:#000000;fill-opacity:1"
-         id="tspan2">A</tspan><tspan
+         id="tspan5">A</tspan><tspan
          style="fill:#420042"
-         id="tspan4">A</tspan></tspan></text>
-  <path
-     sodipodi:type="star"
-     style="fill:none;stroke:#000000;stroke-width:1.88976;paint-order:markers stroke fill"
-     id="path1"
-     inkscape:flatsided="true"
-     sodipodi:sides="3"
-     sodipodi:cx="62.2057"
-     sodipodi:cy="21.313507"
-     sodipodi:r1="47.079174"
-     sodipodi:r2="23.539587"
-     sodipodi:arg1="1.409542"
-     sodipodi:arg2="2.4567396"
-     inkscape:rounded="0"
-     inkscape:randomized="0"
-     d="M 69.764562,67.781907 18.183454,4.6254735 98.669084,-8.4668597 Z"
-     inkscape:transform-center-x="-11.512719"
-     inkscape:transform-center-y="-0.058432294"
-     transform="matrix(0.76470929,0.63260269,-0.63750958,0.77064088,50.437201,-6.0876694)" />
-  <ellipse
-     style="fill:none;stroke:#000000;stroke-width:1.88976;paint-order:markers stroke fill"
-     id="path2"
-     cx="138.47583"
-     cy="49.194542"
-     rx="6.3449998"
-     ry="6.4439998"
-     inkscape:label="path2" />
-  <g
-     id="svg3-5"
-     transform="translate(-10.89336,-4.109966)">
-    <text
-       xml:space="preserve"
-       style="font-size:17.3333px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;paint-order:markers stroke fill"
-       x="170.97687"
-       y="45.836823"
-       id="text1-8"><tspan
-         sodipodi:role="line"
-         id="tspan1-8"
-         x="170.97687"
-         y="45.836823">A</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:17.3333px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:8.1313;display:inline;opacity:0.99;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;paint-order:markers stroke fill"
-       x="171.99504"
-       y="25.774473"
-       id="text2"
-       transform="matrix(2.5801603,0,0,1.2706432,-277.12966,4.4298969)"><tspan
-         x="171.99504"
-         y="25.774473"
-         id="tspan8">-</tspan></text>
-  </g>
+         id="tspan6">A</tspan></tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:17.3333px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:1.00157;paint-order:markers fill stroke"
+     x="9.4175959"
+     y="62.577446"
+     id="text89"><tspan
+       sodipodi:role="line"
+       id="tspan89"
+       x="9.4175959"
+       y="62.577446">B</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:17.3333px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:0.99;fill:#000000;stroke:#000000;stroke-width:0.1;paint-order:markers stroke fill"
+     x="147.83147"
+     y="45.477077"
+     id="text4"><tspan
+       sodipodi:role="line"
+       id="tspan3"
+       x="147.83147"
+       y="45.477077">A^B</tspan></text>
 </svg>

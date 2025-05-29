@@ -25,7 +25,7 @@ public class LogicGateGUI extends JFrame{
 		inputB = new JCheckBox("Input B");
 		outputLabel = new JLabel("Output: false");//check-box initial false value
 		
-		String[] gates = {"AND", "OR", "XOR", "NOT (A only)","NOT (B only)","NOR"};
+		String[] gates = {"AND", "OR", "NOT (A only)","NOT (B only)","NOR","XOR"};
 		gateSelector = new JComboBox<>(gates);
 
 		// Create SVG viewer before wiring action listeners
@@ -34,7 +34,7 @@ public class LogicGateGUI extends JFrame{
 		
 		JButton evaluateButton = new JButton("Evaluate");//creates a combo box with gate names
 		evaluateButton.addActionListener(e -> evaluateGate());//listener event for evaluate button
-		
+
 		//adds each GUI component
 		controlsPanel.add(gateSelector);
 		controlsPanel.add(inputA);
@@ -80,6 +80,7 @@ public class LogicGateGUI extends JFrame{
 		case "NOT (A only)" -> "NOT_A_gate";
 		case "NOT (B only)" -> "NOT_B_gate";
 		case "NOR" -> "NOR_gate";
+		case "XOR" -> "XOR_gate";
 		default -> null;
 		};
 		
