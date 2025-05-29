@@ -71,6 +71,32 @@ public class LogicGateGUI extends JFrame{
 		}
 
 	}
+	
+	private void switchToEvaluatedGate(String gateName) {
+		
+		String baseFileName = switch(gateName) {//get the name of the file
+		case "AND" -> "AND_gate";
+		case "OR" -> "OR_gate";
+		case "NOT (A only)" -> "NOT_A_gate";
+		case "NOT (B only)" -> "NOT_B_gate";
+		case "NOR" -> "NOR_gate";
+		default -> null;
+		};
+		
+		if(baseFileName != null) {
+			File evaluatedFile = new File("images/" + baseFileName + "_Evaluated.svg");
+			if(evaluatedFile.exists()) {
+				viewer.loadSVG(evaluatedFile);
+			}
+			else {
+				viewer.loadSVG(new File("images/" + baseFileName +".svg")); //load back to default gate
+				System.out.println("Evaluated SVG not found for "+ gateName +", using default.");
+			}
+			
+		}
+		
+	}
+	
 
 	public void evaluateGate() {
 		//gets the value of the check-boxes, if checked set to true
@@ -83,7 +109,10 @@ public class LogicGateGUI extends JFrame{
 		
 		switch(selectedGate) {
 			case "AND" -> result = LogicGateApp.andGate(a,b);
-			case "OR" -> result = LogicGateApp.orGate(a,b);
+			case "OR" -> {result = LogicGateApp.orGate(a,b);
+			switchToEvaluatedGate("OR");
+			}
+			
 			case "NOT (A only)" -> result = LogicGateApp.notGate(a);
 			case "NOT (B only)" -> result = LogicGateApp.notGate(b);
 			case "NOR" -> result = LogicGateApp.norGate(a, b);
