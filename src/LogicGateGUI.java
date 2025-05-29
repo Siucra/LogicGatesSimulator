@@ -84,7 +84,7 @@ public class LogicGateGUI extends JFrame{
 		};
 		
 		if(baseFileName != null) {
-			File evaluatedFile = new File("images/" + baseFileName + "_Evaluated.svg");
+			File evaluatedFile = new File("images/" + baseFileName + "_evaluated.svg");
 			if(evaluatedFile.exists()) {
 				viewer.loadSVG(evaluatedFile);
 			}
@@ -107,18 +107,18 @@ public class LogicGateGUI extends JFrame{
 		String selectedGate = (String) gateSelector.getSelectedItem();
 		boolean result = false;
 		
-		switch(selectedGate) {
-			case "AND" -> result = LogicGateApp.andGate(a,b);
-			case "OR" -> {result = LogicGateApp.orGate(a,b);
-			switchToEvaluatedGate("OR");
-			}
-			
-			case "NOT (A only)" -> result = LogicGateApp.notGate(a);
-			case "NOT (B only)" -> result = LogicGateApp.notGate(b);
-			case "NOR" -> result = LogicGateApp.norGate(a, b);
-			case "XOR" -> result = LogicGateApp.xorGate(a, b);
-		}
+		result = switch(selectedGate) {
+			case "AND" -> LogicGateApp.andGate(a,b);
+			case "OR" -> LogicGateApp.orGate(a,b);
+			case "NOT (A only)" -> LogicGateApp.notGate(a);
+			case "NOT (B only)" -> LogicGateApp.notGate(b);
+			case "NOR" -> LogicGateApp.norGate(a, b);
+			case "XOR" -> LogicGateApp.xorGate(a, b);
+			default -> false;
+		};
+		
 		outputLabel.setText("Output: " + result);//display result
+		switchToEvaluatedGate(selectedGate);
 
 	}
 	
