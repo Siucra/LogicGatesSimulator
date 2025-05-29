@@ -25,7 +25,7 @@ public class LogicGateGUI extends JFrame{
 		inputB = new JCheckBox("Input B");
 		outputLabel = new JLabel("Output: false");//check-box initial false value
 		
-		String[] gates = {"AND", "OR", "NOT (A only)","NOT (B only)","NOR","XOR"};
+		String[] gates = {"AND", "OR", "NOT (A only)","NOT (B only)","NOR","XOR", "NAND"};
 		gateSelector = new JComboBox<>(gates);
 
 		// Create SVG viewer before wiring action listeners
@@ -62,7 +62,7 @@ public class LogicGateGUI extends JFrame{
 		case "NOT (B only)" -> "images/NOT_B_gate.svg";
 		case "NOR" -> "images/NOR_gate.svg";
 		case "XOR" -> "images/XOR_gate.svg";
-		//nand
+		case "NAND" -> "images/NAND_gate.svg";
 		default -> null;
 		};
 		
@@ -81,6 +81,7 @@ public class LogicGateGUI extends JFrame{
 		case "NOT (B only)" -> "NOT_B_gate";
 		case "NOR" -> "NOR_gate";
 		case "XOR" -> "XOR_gate";
+		case "NAND" -> "NAND_gate";
 		default -> null;
 		};
 		
@@ -115,6 +116,7 @@ public class LogicGateGUI extends JFrame{
 			case "NOT (B only)" -> LogicGateApp.notGate(b);
 			case "NOR" -> LogicGateApp.norGate(a, b);
 			case "XOR" -> LogicGateApp.xorGate(a, b);
+			case "NAND" -> LogicGateApp.nandGate(a, b);
 			default -> false;
 		};
 		

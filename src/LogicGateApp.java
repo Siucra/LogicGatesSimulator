@@ -26,6 +26,10 @@ public class LogicGateApp {
 		
 	}
 	
+	public static boolean nandGate(boolean a, boolean b) {
+		return(a && b);
+	}
+	
 	public static void main(String[]args) {
 		//()-> shortcut for  writing small function with no input
 		//() -> called a lambda : takes no parameters,
